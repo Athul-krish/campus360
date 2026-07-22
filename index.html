@@ -1,33 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html ng-app="campus360">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
     <title>College Dashboard</title>
-</head>
+  </head>
 
-<body ng-controller="dashboardcontroller">
-<input type="text" ng-model="collegename" placeholder="Enter College Name">
-<h1>{{collegename}}</h1>
+  <body ng-controller="dashboardcontroller">
+    <input
+      type="text"
+      ng-model="collegename"
+      placeholder="Enter College Name"
+    />
+    <h1>{{collegename}}</h1>
 
-<input type="text" ng-model="totalstudents" placeholder="Enter Total Students">
-<p>Total Students : {{totalstudents}}</p>
+    <input
+      type="text"
+      ng-model="totalstudents"
+      placeholder="Enter Total Students"
+    />
+    <p>Total Students : {{totalstudents}}</p>
+
+    <input
+      type="text"
+      ng-model="totalfaculty"
+      placeholder="Enter Total Faculty"
+    />
+    <p>Total Faculty : {{totalfaculty}}</p>
+    <button ng-click="totalstudents=totalstudents+1">Add Student</button>
+    <button ng-click="totalfaculty=totalfaculty+1">Add Faculty</button><br><br>
 
 
-<input type="text" ng-model="totalfaculty" placeholder="Enter Total Faculty">
-<p>Total Faculty : {{totalfaculty}}</p>
+    <button ng-click="showstudents=!showstudents">Show/hide Students</button>
+    <div ng-if="showDashboard = !showDashboard">
+        <h2>Student List</h2>
+    <ul ng-show="showstudents">
+      <li ng-repeat="student in students">{{student}}</li>
+    </ul>
+    </div>
 
 
-
-<h2>Student List</h2>
-<ul>
-    <li ng-repeat="student in students">{{student}}</li>
-</ul>
-
-<button ng-click="totalstudents=totalstudents+1">Add Student</button>
-<button ng-click="totalfaculty=totalfaculty+1">Add Faculty</button>
-
-</body>
+  </body>
 </html>
