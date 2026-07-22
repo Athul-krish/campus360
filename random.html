@@ -1,0 +1,57 @@
+<hr />
+
+<h2>Departmen Info</h2>
+
+<div ng-switch="selectedDepartment">
+  <div ng-switch-when="CSE">
+    <h3>Computer Science and Engineering</h3>
+    <p>
+      The CSE department focuses on software systems, algorithms, data structures,
+      machine learning, and computer architecture. Students learn to design,
+      develop, and optimize applications for real-world computing challenges.
+    </p>
+  </div>
+  <div ng-switch-when="MCA">
+    <h3>Master of Computer Application</h3>
+    <p>
+      The MCA program prepares students for advanced application development,
+      databases, enterprise systems, and IT consultancy. It emphasizes practical
+      programming, system integration, and problem-solving skills.
+    </p>
+  </div>
+  <div ng-switch-when="MBA">
+    <h3>Master of Business Administration</h3>
+    <p>
+      The MBA department develops leadership, strategic planning, finance,
+      marketing, and operations management expertise. Students learn to manage
+      organizations, lead teams, and drive business growth.
+    </p>
+  </div>
+  <div ng-switch-when="EEE">
+    <h3>Electronics and Electrical engineering</h3>
+    <p>
+      The EEE department covers power systems, circuits, electronics, control
+      systems, and renewable energy. It trains students in designing and
+      maintaining reliable electrical and electronic systems.
+    </p>
+  </div>
+  <div ng-switch-when="BCA">
+    <h3>Bachelor of Computer Application</h3>
+    <p>
+      The BCA program introduces core IT subjects such as programming, web
+      development, databases, and software engineering. It builds a strong
+      foundation for careers in computing and technology.
+    </p>
+  </div>
+  <div ng-switch-when="IMCA">
+    <h3>Integrated Master of Computer Application</h3>
+    <p>
+      The IMCA program integrates undergraduate and postgraduate studies in
+      computer application, offering advanced training in programming,
+      systems analysis, and research-oriented development over an extended term.
+    </p>
+  </div>
+  <div ng-switch-default>
+    <h3>Please Select a Department</h3>
+  </div>
+</div>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
     <title>College Dashboard</title>
   </head>
 
@@ -17,30 +18,114 @@
     <h1>{{collegename}}</h1>
 
     <input
-      type="text"
+      type="number"
       ng-model="totalstudents"
       placeholder="Enter Total Students"
     />
-    <p>Total Students : {{totalstudents}}</p>
+    <p ng-class="{'green': totalstudents >= 1000,'red': totalstudents < 1000}">
+      Total Students : {{totalstudents}}
+    </p>
 
     <input
       type="text"
       ng-model="totalfaculty"
       placeholder="Enter Total Faculty"
     />
-    <p>Total Faculty : {{totalfaculty}}</p>
+    <p
+      ng-style="{
+        'color': totalfaculty>=100 ? 'green' : 'red', 'font-size':'25px', 'font-weight':'bold'
+    }"
+    >
+      Total Faculty : {{totalfaculty}}
+    </p>
     <button ng-click="totalstudents=totalstudents+1">Add Student</button>
-    <button ng-click="totalfaculty=totalfaculty+1">Add Faculty</button><br><br>
+    <button ng-click="totalfaculty=totalfaculty+1">Add Faculty</button
+    ><br /><br />
 
-
-    <button ng-click="showstudents=!showstudents">Show/hide Students</button>
-    <div ng-if="showDashboard = !showDashboard">
-        <h2>Student List</h2>
-    <ul ng-show="showstudents">
-      <li ng-repeat="student in students">{{student}}</li>
-    </ul>
+    <button ng-click="addstudent()">Show/hide Students</button>
+    <div ng-if="showDashboard">
+      <h2>Student List</h2>
+      <ul ng-show="showstudents">
+        <li ng-repeat="student in students">{{student}}</li>
+      </ul>
     </div>
 
+    <hr />
 
+    <h2>filter demo</h2>
+    <p>uppercase: {{collegename | uppercase}}</p>
+    <p>lowercase: {{collegename | lowercase}}</p>
+    <p>currency: {{fees | currency}}</p>
+    <p>date: {{today | date:'dd/MM/yyyy'}}</p>
+
+    <hr />
+    <h2>Selected Department</h2>
+    <label>Select Department/</label>
+    <select
+      ng-model="selectedDepartment"
+      ng-options="department for department in departments"
+    ></select>
+
+    <p>Select Department: {{selectedDepartment}}</p>
+    <hr />
+
+    <h2>Departmen Info</h2>
+
+    <div ng-switch="selectedDepartment">
+      <div ng-switch-when="CSE">
+        <h3>Computer Science and Engineering</h3>
+        <p>
+          The CSE department focuses on software systems, algorithms, data
+          structures, machine learning, and computer architecture. Students
+          learn to design, develop, and optimize applications for real-world
+          computing challenges.
+        </p>
+      </div>
+      <div ng-switch-when="MCA">
+        <h3>Master of Computer Application</h3>
+        <p>
+          The MCA program prepares students for advanced application
+          development, databases, enterprise systems, and IT consultancy. It
+          emphasizes practical programming, system integration, and
+          problem-solving skills.
+        </p>
+      </div>
+      <div ng-switch-when="MBA">
+        <h3>Master of Business Administration</h3>
+        <p>
+          The MBA department develops leadership, strategic planning, finance,
+          marketing, and operations management expertise. Students learn to
+          manage organizations, lead teams, and drive business growth.
+        </p>
+      </div>
+      <div ng-switch-when="EEE">
+        <h3>Electronics and Electrical engineering</h3>
+        <p>
+          The EEE department covers power systems, circuits, electronics,
+          control systems, and renewable energy. It trains students in designing
+          and maintaining reliable electrical and electronic systems.
+        </p>
+      </div>
+      <div ng-switch-when="BCA">
+        <h3>Bachelor of Computer Application</h3>
+        <p>
+          The BCA program introduces core IT subjects such as programming, web
+          development, databases, and software engineering. It builds a strong
+          foundation for careers in computing and technology.
+        </p>
+      </div>
+      <div ng-switch-when="IMCA">
+        <h3>Integrated Master of Computer Application</h3>
+        <p>
+          The IMCA program integrates undergraduate and postgraduate studies in
+          computer application, offering advanced training in programming,
+          systems analysis, and research-oriented development over an extended
+          term.
+        </p>
+      </div>
+      <div ng-switch-default>
+        <h3>Please Select a Department</h3>
+      </div>
+    </div>
   </body>
 </html>
