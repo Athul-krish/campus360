@@ -8,6 +8,19 @@ app.controller("dashboardcontroller", function ($scope) {
   $scope.today = new Date();
   $scope.departments=["CSE","MCA","MBA","EEE","BCA","IMCA"];
   $scope.selectedDepartment="MCA"
+
+  $scope.isDisabled = true;
+  $scope.allowAdmission = function(){
+    $scope.isDisabled=false;
+  };
+
+  $scope.readOnly=true;
+  $scope.toggleReadOnly=function(){
+    $scope.readOnly=!$scope.readOnly;
+  };
+
+
+//to check if this is working
   console.log("dashboard controller load aayind");
 
   $scope.students = ["Luka", "John", "Jane", "Bob"];

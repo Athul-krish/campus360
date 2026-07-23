@@ -100,6 +100,7 @@
       </div>
       <div ng-switch-when="EEE">
         <h3>Electronics and Electrical engineering</h3>
+        
         <p>
           The EEE department covers power systems, circuits, electronics,
           control systems, and renewable energy. It trains students in designing
@@ -127,5 +128,32 @@
         <h3>Please Select a Department</h3>
       </div>
     </div>
+
+    <hr />
+
+    <h2>ng-init Demo</h2>
+    <div ng-init="collegecode='fisat123'; location='Angamaly'">
+      <p>College Code: {{collegecode}}</p>
+      <p>College Location: {{location}}</p>
+    </div>
+
+    <hr />
+
+    <h2>ng-disable demo</h2>
+    <button ng-click="allowAdmission()">Enable Addmission</button>
+    <br /><br /><br />
+
+    <button ng-disabled="isDisabled">Take admission</button>
+
+    <hr />
+    <br />
+
+    <h2>ng-readOnly demo</h2>
+    <label> College ID </label>
+    <br /><br />
+    <input type="text" ng-model="" ng-randomly="isReadonly" />
+    <br />
+    <button ng-click="isReadOnly">Display</button>
   </body>
 </html>
+
