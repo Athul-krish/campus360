@@ -10,39 +10,25 @@
   </head>
 
   <body ng-controller="dashboardcontroller">
-    <input
-      type="text"
-      ng-model="collegename"
-      placeholder="Enter College Name"
-    />
+
+    <input type="text" ng-model="collegename" placeholder="Enter College Name" />
     <h1>{{collegename}}</h1>
 
-    <input
-      type="number"
-      ng-model="totalstudents"
-      placeholder="Enter Total Students"
-    />
+    <input type="number" ng-model="totalstudents" placeholder="Enter Total Students" />
     <p ng-class="{'green': totalstudents >= 1000,'red': totalstudents < 1000}">
       Total Students : {{totalstudents}}
     </p>
 
-    <input
-      type="text"
-      ng-model="totalfaculty"
-      placeholder="Enter Total Faculty"
-    />
-    <p
-      ng-style="{
-        'color': totalfaculty>=100 ? 'green' : 'red', 'font-size':'25px', 'font-weight':'bold'
-    }"
-    >
+    <input type="text" ng-model="totalfaculty" placeholder="Enter Total Faculty" />
+    <p ng-style="{'color': totalfaculty>=100 ? 'green' : 'red','font-size':'25px','font-weight':'bold'}">
       Total Faculty : {{totalfaculty}}
     </p>
-    <button ng-click="totalstudents=totalstudents+1">Add Student</button>
-    <button ng-click="totalfaculty=totalfaculty+1">Add Faculty</button
-    ><br /><br />
 
-    <button ng-click="addstudent()">Show/hide Students</button>
+    <button ng-click="totalstudents=totalstudents+1">Add Student</button>
+    <button ng-click="totalfaculty=totalfaculty+1">Add Faculty</button><br><br>
+
+    <button ng-click="addstudent()">Show/Hide Students</button>
+
     <div ng-if="showDashboard">
       <h2>Student List</h2>
       <ul ng-show="showstudents">
@@ -50,86 +36,39 @@
       </ul>
     </div>
 
-    <hr />
+    <hr>
 
-    <h2>filter demo</h2>
+    <h2>Filter Demo</h2>
     <p>uppercase: {{collegename | uppercase}}</p>
     <p>lowercase: {{collegename | lowercase}}</p>
     <p>currency: {{fees | currency}}</p>
     <p>date: {{today | date:'dd/MM/yyyy'}}</p>
 
-    <hr />
+    <hr>
+
     <h2>Selected Department</h2>
-    <label>Select Department/</label>
-    <select
-      ng-model="selectedDepartment"
-      ng-options="department for department in departments"
-    ></select>
+    <label>Select Department</label>
+    <select ng-model="selectedDepartment"
+            ng-options="dept for dept in departments">
+    </select>
 
     <p>Select Department: {{selectedDepartment}}</p>
-    <hr />
 
-    <h2>Departmen Info</h2>
+    <hr>
+
+    <h2>Department Info</h2>
 
     <div ng-switch="selectedDepartment">
-      <div ng-switch-when="CSE">
-        <h3>Computer Science and Engineering</h3>
-        <p>
-          The CSE department focuses on software systems, algorithms, data
-          structures, machine learning, and computer architecture. Students
-          learn to design, develop, and optimize applications for real-world
-          computing challenges.
-        </p>
-      </div>
-      <div ng-switch-when="MCA">
-        <h3>Master of Computer Application</h3>
-        <p>
-          The MCA program prepares students for advanced application
-          development, databases, enterprise systems, and IT consultancy. It
-          emphasizes practical programming, system integration, and
-          problem-solving skills.
-        </p>
-      </div>
-      <div ng-switch-when="MBA">
-        <h3>Master of Business Administration</h3>
-        <p>
-          The MBA department develops leadership, strategic planning, finance,
-          marketing, and operations management expertise. Students learn to
-          manage organizations, lead teams, and drive business growth.
-        </p>
-      </div>
-      <div ng-switch-when="EEE">
-        <h3>Electronics and Electrical engineering</h3>
-        
-        <p>
-          The EEE department covers power systems, circuits, electronics,
-          control systems, and renewable energy. It trains students in designing
-          and maintaining reliable electrical and electronic systems.
-        </p>
-      </div>
-      <div ng-switch-when="BCA">
-        <h3>Bachelor of Computer Application</h3>
-        <p>
-          The BCA program introduces core IT subjects such as programming, web
-          development, databases, and software engineering. It builds a strong
-          foundation for careers in computing and technology.
-        </p>
-      </div>
-      <div ng-switch-when="IMCA">
-        <h3>Integrated Master of Computer Application</h3>
-        <p>
-          The IMCA program integrates undergraduate and postgraduate studies in
-          computer application, offering advanced training in programming,
-          systems analysis, and research-oriented development over an extended
-          term.
-        </p>
-      </div>
-      <div ng-switch-default>
-        <h3>Please Select a Department</h3>
-      </div>
+      <div ng-switch-when="CSE"><h3>Computer Science and Engineering</h3></div>
+      <div ng-switch-when="MCA"><h3>Master of Computer Application</h3></div>
+      <div ng-switch-when="MBA"><h3>Master of Business Administration</h3></div>
+      <div ng-switch-when="EEE"><h3>Electronics and Electrical Engineering</h3></div>
+      <div ng-switch-when="BCA"><h3>Bachelor of Computer Application</h3></div>
+      <div ng-switch-when="IMCA"><h3>Integrated Master of Computer Application</h3></div>
+      <div ng-switch-default><h3>Please Select a Department</h3></div>
     </div>
 
-    <hr />
+    <hr>
 
     <h2>ng-init Demo</h2>
     <div ng-init="collegecode='fisat123'; location='Angamaly'">
@@ -137,23 +76,107 @@
       <p>College Location: {{location}}</p>
     </div>
 
-    <hr />
+    <hr>
 
-    <h2>ng-disable demo</h2>
-    <button ng-click="allowAdmission()">Enable Addmission</button>
-    <br /><br /><br />
+    <h2>ng-disable Demo</h2>
+    <button ng-click="allowAdmission()">Enable Admission</button><br><br>
+    <button ng-disabled="isDisabled">Take Admission</button>
 
-    <button ng-disabled="isDisabled">Take admission</button>
+    <hr>
 
-    <hr />
-    <br />
+    <h2>ng-readonly Demo</h2>
+    <label>College ID</label><br><br>
+    <input type="text" ng-model="collegeId" ng-readonly="isReadOnly">
+    <br>
+    <button ng-click="toggleReadOnly()">Toggle Readonly</button>
+    <p>Readonly Status: {{isReadOnly}}</p>
 
-    <h2>ng-readOnly demo</h2>
-    <label> College ID </label>
-    <br /><br />
-    <input type="text" ng-model="" ng-randomly="isReadonly" />
-    <br />
-    <button ng-click="isReadOnly">Display</button>
+    <hr>
+
+    <!-- Register form -->
+    <h2>Student Registration</h2>
+
+    <form name="studentForm" novalidate>
+
+      <label>Student Name:</label><br>
+      <input type="text" name="studentName" ng-model="student.name" required ng-minlength="2" ng-pattern="/^[A-Za-z ]+$/"><br><br>
+
+      <p ng-show="studentForm.studentName.$touched && (studentForm.studentName.$error.required || studentForm.studentName.$error.minlength || studentForm.studentName.$error.pattern)" style="color:red">
+        Student Name is required and should contain only letters and spaces
+      </p>
+
+
+
+
+      <label>Phone Number:</label><br>
+      <input type="text" name="phone" ng-model="student.phone" required ng-minlength="10" ng-maxlength="10"><br><br>
+
+      <p ng-show="studentForm.phone.$touched && (studentForm.phone.$error.minlength || studentForm.phone.$error.maxlength)" style="color:red">
+        Phone number must be exactly 10 digits
+      </p>
+      
+      
+
+
+      <label>Email:</label><br>
+      <input type="email" name="studentEmail" ng-model="student.email" required ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in)$/"><br><br>
+
+      <p ng-show="studentForm.studentEmail.$touched && (studentForm.studentEmail.$error.required || studentForm.studentEmail.$error.pattern)" style="color:red">
+        Enter a valid email like name@gmail.com or name@gmail.in
+      </p>
+
+
+
+
+
+
+      <label>Gender:</label><br>
+      <select name="studentGender" ng-model="student.gender" required>
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select><br><br>
+
+
+
+
+      <label>Age</label><br>
+      <input type="number" name="age" ng-model="student.age" ng-min="18"><br><br>
+
+      <p ng-show="studentForm.age.$touched && studentForm.age.$error.min" style="color:red">
+        Age must be 18 or above. Below 18 is not eligible.
+      </p>
+
+
+
+
+      <label>Address:</label><br>
+      <input type="text" name="address" ng-model="student.address" required ng-minlength="5" ng-maxlength="50" ng-pattern="/^[A-Za-z0-9 ,./#-]+$/"><br><br>
+
+      <p ng-show="studentForm.address.$touched && (studentForm.address.$error.required || studentForm.address.$error.minlength || studentForm.address.$error.maxlength || studentForm.address.$error.pattern)" style="color:red">
+        Address is required and must be between 5 and 50 characters using letters, numbers, spaces, and special characters like , . / # -
+      </p>
+
+
+
+
+      <label>Department:</label><br>
+      <select name="studentDepartment" ng-model="student.department" ng-options="dept for dept in departments" required>
+        <option value="">Select Department</option>
+      </select>
+
+      <br><br>
+      <button type="submit">Register Student</button>
+
+    </form>
+
+    <hr>
+
+    <h2>Form Status</h2>
+    <p>valid : {{studentForm.$valid}}</p>
+    <p>invalid : {{studentForm.$invalid}}</p>
+    <p>pristine : {{studentForm.$pristine}}</p>
+    <p>dirty : {{studentForm.$dirty}}</p>
+
   </body>
 </html>
-
